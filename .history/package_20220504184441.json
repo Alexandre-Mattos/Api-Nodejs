@@ -1,0 +1,19 @@
+{
+  "name": "api-node",
+  "version": "1.0.0",
+  "description": "Criação de api com nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexandre-Mattos/Api-Nodejs.git"
+  },
+  "author": "alexandre-mattos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexandre-Mattos/Api-Nodejs/issues"
+  },
+  "homepage": "https://github.com/Alexandre-Mattos/Api-Nodejs#readme"
+}

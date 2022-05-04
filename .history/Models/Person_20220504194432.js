@@ -1,0 +1,26 @@
+const mongoose = require('mongoose')
+
+const Person = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+    },
+    email: String,
+    senha: String,
+    posts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post',
+      },
+    ],
+  },
+  { timestamps: true },
+)
+
+Person.virtual('Post', {
+  ref: 'Post',
+  localField: 'personId',
+  foreignField: '_id',
+})
+
+module.exports = mongoose.model('Person', Person)
