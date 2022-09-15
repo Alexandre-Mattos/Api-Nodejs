@@ -1,16 +1,30 @@
 const express = require('express')
+const { createPostValidator } = require('../validators/index.js')
+const { createPersonValidator } = require('../validators/PersonsValidator.js')
+const PostController = require('../Controllers/PostController.js')
+const PersonController = require('../Controllers/PersonsController.js.js')
+
+const namespace = require('express-namespace')
+console.log(namespace())
 const router = express.Router()
 
-const PersonController = require('../Controllers/PeopleController')
-const PostsController = require('../Controllers/PostsController')
-
-router.route('/').get(PersonController.index)
+// ================== POSTS ==================
+router
+  .route('/posts')
+  .get(PostController.index)
+  .post(createPostValidator, PostController.store)
 
 router
-  .route('/persons')
-  .get(PersonController.index)
-  .post(PersonController.store)
+  .route('/posts/:postId')
+  .get(PostController.show)
+  .patch(PostController.update)
+  .delete(PostController.delete)
 
-router.route('/posts').get(PostsController.index).post(PostsController.store)
+// ================== PERSONS ==================
+router.get('/person', PersonController.index)
+router.get('/person/:personId', PersonController.show)
+router.post('/person', PersonController.store)
+router.patch('/person/:personId', PersonController.update)
+router.delete('/person/:personId', PersonController.delete)
 
 module.exports = router
